@@ -17,7 +17,7 @@ public class CleansweepApplication {
 		UserDB uc = UserDB.getInstance();
 		User u1 = new User("user1", "123");
 		User u2 = new User("user2", "123");
-		u2.setRoomba("AJSDASNFN!@#1231");
+		u2.setCleansweep("AUHF(**!@#@813  <--some clean sweep hash");
 		uc.add(u1);
 		uc.add(u2);
 

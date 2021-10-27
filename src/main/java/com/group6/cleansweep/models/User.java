@@ -1,7 +1,7 @@
 package com.group6.cleansweep.models;
 
 public class User {
-    public String username, password, roomba;
+    public String username, password, cleansweep;
 
     public User(){}
 
@@ -27,16 +27,16 @@ public class User {
         this.password = password;
     }
 
-    public String getRoomba() {
-        return roomba;
+    public String getCleansweep() {
+        return cleansweep;
     }
 
-    public void setRoomba(String roomba) {
-        this.roomba = roomba;
+    public void setCleansweep(String cleansweep) {
+        this.cleansweep = cleansweep;
     }
 
-    public boolean hasRoomba(){
-        if(roomba.isEmpty()){
+    public boolean hasCleanSweep(){
+        if(cleansweep.isEmpty()){
             return true;
         }
         return false;

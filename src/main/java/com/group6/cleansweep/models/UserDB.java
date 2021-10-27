@@ -33,4 +33,12 @@ public class UserDB {
         ul.add(u);
     }
 
+    public User getUser(User u){
+        for(User x : ul){
+            if(x.compareTo(u)){
+                return x;
+            }
+        }
+        return null;
+    }
 }
