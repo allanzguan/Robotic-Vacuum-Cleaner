@@ -1,10 +1,9 @@
 package com.group6.cleansweep.controller;
 
 import com.group6.cleansweep.models.User;
+import com.group6.cleansweep.models.UserDB;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.group6.cleansweep.models.api;
@@ -30,6 +29,13 @@ public class WebController {
     @PostMapping("/login")
     public String userSubmit(@ModelAttribute User user, Model model){
         model.addAttribute("user", user);
+        System.out.println("------------------------------------------");
+        System.out.println("user name: " + user.getUsername());
+        System.out.println("Has roomba: " + user.getRoomba());
+        UserDB db = UserDB.getInstance();
+        if(!db.exists(user)){
+            return "register";
+        }
         return "home";
     }
 
