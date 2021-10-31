@@ -43,4 +43,23 @@ public class WebController {
         return "home";
     }
 
+    @GetMapping("/register")
+    public String signup(Model model){
+        model.addAttribute("user", new User());
+        return "signup";
+    }
+
+    @PostMapping("/register")
+    public String registerResults(User u){
+
+        UserDB db = UserDB.getInstance();
+        if(db.exists(u)){
+            return "failedRegister";
+        }
+
+        db.addToDB(u);
+
+        return "home";
+    }
+
 }//
