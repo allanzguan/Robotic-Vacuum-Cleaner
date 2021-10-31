@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/allanzguan/Robotic-Vacuum-Cleaner.svg?style=shiled)](https://circleci.com/gh/allanzguan/Robotic-Vacuum-Cleaner)
+[![CircleCI](https://circleci.com/gh/allanzguan/Robotic-Vacuum-Cleaner.svg?style=shield)](https://circleci.com/gh/allanzguan/Robotic-Vacuum-Cleaner)
 # Robotic-Vacuum-Cleaner
 Robotic Vacuum Cleaner Springboot version
 
