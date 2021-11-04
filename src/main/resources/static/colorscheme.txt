@@ -1,0 +1,8 @@
+
+darker gray: #d1d3cf rgb(209,211,207)
+
+light gray: #e8eae6 rgb(232,234,230)
+
+green: #84c464 rgb(132,196,100)
+
+light green (for hovering, etc): #9dd083 rgb(157,208,131)

@@ -3,7 +3,7 @@ body {
 }
 
 .bottom-container {
-    background-color: #cdd0cd;
+    background-color: #d1d3cf;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -32,14 +32,14 @@ body {
     font-family: Arial, serif;
     color: #ffffff;
     font-size: 20px;
-    background: #8fa88f;
+    background: #84c464;
     padding: 10px 20px 10px 20px;
     position: relative;
     text-decoration: none;
 }
 
 .login-btn:hover {
-    background: #a4bfa4;
+    background: #9dd083;
     text-decoration: none;
 }
 
@@ -60,7 +60,7 @@ body {
     font-family: Arial, serif;
     color: #ffffff;
     font-size: 20px;
-    background: #8fa88f;
+    background: #84c464;
     padding: 10px 20px 10px 20px;
     position: relative;
     top:30px;
@@ -68,7 +68,7 @@ body {
 }
 
 .register-btn:hover {
-    background: #a4bfa4;
+    background: #9dd083;
     text-decoration: none;
 }
 
