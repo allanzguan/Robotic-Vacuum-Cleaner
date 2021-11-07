@@ -15,7 +15,7 @@ public class TileLocator {
         }
 
         for(Tile t : startR.getTileList()){
-            if(t.getType().equals("station")){
+            if(t.getSpecialty().equals("station")){
                 start = t;
             }
         }

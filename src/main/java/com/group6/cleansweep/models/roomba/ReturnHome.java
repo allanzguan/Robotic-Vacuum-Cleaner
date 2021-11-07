@@ -21,7 +21,7 @@ public class ReturnHome {
             ex.expand();
 
             //Found a Solution
-            if (ex.getTile().getType().equals("station")) {
+            if (ex.getTile().getSpecialty().equals("station")) {
                 float tc = ex.getTotalCost();
                 solution.add(0, ex);
                 while (ex.getParent() != null) {
@@ -34,22 +34,22 @@ public class ReturnHome {
             //Find which directions the Clean Sweep can move
             //Test North
             Tile test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX(),ex.getTile().getTileCoordinate().getY() + 1);
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
                 ex.addChild(test);
             }
             //Test West
             test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX() - 1, ex.getTile().getTileCoordinate().getY());
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
                 ex.addChild(test);
             }
             //Test East
             test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX() + 1, ex.getTile().getTileCoordinate().getY());
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
                 ex.addChild(test);
             }
             //Test South
             test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX(), ex.getTile().getTileCoordinate().getY() - 1);
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
                 ex.addChild(test);
             }
 
@@ -91,7 +91,7 @@ public class ReturnHome {
             float powerUse = (TileToPower.convert(curTile.getTile().getType()) + TileToPower.convert(nextTile.getTile().getType())) / 2;
             battery -= powerUse;
 
-            if (!nextTile.getTile().getType().equals("station")) {
+            if (!nextTile.getTile().getSpecialty().equals("station")) {
                 message = "Now on Tile: " + nextTile.getTile().toString() + " battery: " + battery + "/250.0 \n Low power. Returning to Charging Station.";
             }
             else {

@@ -1,16 +1,16 @@
 [
         {"roomName": "Starting room", "tileList":
-        [{"tc": {"x": 1, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 1, "y": 2}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 1, "y": 3}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 2, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 2, "y": 2}, "type": "station", "dirt": 0},
-         {"tc": {"x": 2, "y": 3}, "type": "wall", "dirt": 1},
-         {"tc": {"x": 3, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 3, "y": 2}, "type": "tile", "dirt": 2},
-         {"tc": {"x": 3, "y": 3}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 4, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 4, "y": 2}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 4, "y": 3}, "type": "wall", "dirt": 0}
+        [{"tc": {"x": 1, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 1, "y": 2}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 1, "y": 3}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 2, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 2, "y": 2}, "type": "tile", "dirt": 0, "specialty": "station"},
+         {"tc": {"x": 2, "y": 3}, "type": "wall", "dirt": 1, "specialty": "none"},
+         {"tc": {"x": 3, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 3, "y": 2}, "type": "tile", "dirt": 2, "specialty": "none"},
+         {"tc": {"x": 3, "y": 3}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 4, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 4, "y": 2}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 4, "y": 3}, "type": "wall", "dirt": 0, "specialty": "none"}
         ]}
 ]

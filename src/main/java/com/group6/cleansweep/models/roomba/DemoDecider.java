@@ -33,7 +33,7 @@ public class DemoDecider {
         //see if any direction's tile type is a wall or stairs
         List<Tile> choices = new LinkedList<>();
         for(Tile t: d) {
-            if ((t.getType().equals("wall") == false) && (t.getType().equals("stairs") == false)) {
+            if ((t.getType().equals("wall") == false) && (t.getType().equals("stairs") == false) && (t.getSpecialty().contains("Closed Door") == false)) {
                 choices.add(t);
             }
         }

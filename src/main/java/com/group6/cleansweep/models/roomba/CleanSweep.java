@@ -90,7 +90,7 @@ public class CleanSweep {
                 curTile = North;
 
                 //Check for Charging Station
-                if (curTile.getType().equals("station"))
+                if (curTile.getSpecialty().equals("station"))
                     battery = 250; //Charges
 
                 String message = "Now on Tile: " + curTile.toString() + " battery: " + battery + "/250.0";

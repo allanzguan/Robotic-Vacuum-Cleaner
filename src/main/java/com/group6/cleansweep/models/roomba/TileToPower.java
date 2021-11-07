@@ -10,8 +10,6 @@ public class TileToPower {
             powerUse = 1;
         else if (type.equals("carpet"))
             powerUse = 2;
-        else if (type.contains("transition")) //this will change with a possible discussion with new JSON format
-            powerUse = 1;
         else if (type.equals("heavy_carpet"))
             powerUse = 3;
 

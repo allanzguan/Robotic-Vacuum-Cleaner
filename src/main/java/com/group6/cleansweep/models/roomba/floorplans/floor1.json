@@ -14,37 +14,39 @@
 
 //We will add a heavy_carpet type later
 
+//NOTE: NEW JSON CHANGES WITH SPECIALTY
+
 [
         {"roomName": "Starting room", "tileList":
-        [{"tc": {"x": 1, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 1, "y": 2}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 1, "y": 3}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 1, "y": 4}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 2, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 2, "y": 2}, "type": "station", "dirt": 0},
-         {"tc": {"x": 2, "y": 3}, "type": "tile", "dirt": 1},
-         {"tc": {"x": 2, "y": 4}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 3, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 3, "y": 2}, "type": "tile", "dirt": 2},
-         {"tc": {"x": 3, "y": 3}, "type": "tile", "dirt": 1},
-         {"tc": {"x": 3, "y": 4}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 4, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 4, "y": 2}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 4, "y": 3}, "type": "transition: Starting room <-> room 2", "dirt": 1},
-         {"tc": {"x": 4, "y": 4}, "type": "wall", "dirt": 0}
+        [{"tc": {"x": 1, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 1, "y": 2}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 1, "y": 3}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 1, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 2, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 2, "y": 2}, "type": "tile", "dirt": 0, "specialty": "station"},
+         {"tc": {"x": 2, "y": 3}, "type": "tile", "dirt": 1, "specialty": "none"},
+         {"tc": {"x": 2, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 3, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 3, "y": 2}, "type": "tile", "dirt": 2, "specialty": "none"},
+         {"tc": {"x": 3, "y": 3}, "type": "tile", "dirt": 1, "specialty": "none"},
+         {"tc": {"x": 3, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 4, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 4, "y": 2}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 4, "y": 3}, "type": "tile", "dirt": 1, "specialty": "transition -> room 2"},
+         {"tc": {"x": 4, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"}
         ]},
         {"roomName": "room 2", "tileList":
-        [{"tc": {"x": 5, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 5, "y": 2}, "type": "tile", "dirt": 3},
-         {"tc": {"x": 5, "y": 3}, "type": "tile", "dirt": 1},
-         {"tc": {"x": 5, "y": 4}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 6, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 6, "y": 2}, "type": "tile", "dirt": 2},
-         {"tc": {"x": 6, "y": 3}, "type": "tile", "dirt": 2},
-         {"tc": {"x": 6, "y": 4}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 7, "y": 1}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 7, "y": 2}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 7, "y": 3}, "type": "wall", "dirt": 0},
-         {"tc": {"x": 7, "y": 4}, "type": "wall", "dirt": 0}
+        [{"tc": {"x": 5, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 5, "y": 2}, "type": "tile", "dirt": 3, "specialty": "none"},
+         {"tc": {"x": 5, "y": 3}, "type": "tile", "dirt": 1, "specialty": "none"},
+         {"tc": {"x": 5, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 6, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 6, "y": 2}, "type": "tile", "dirt": 2, "specialty": "none"},
+         {"tc": {"x": 6, "y": 3}, "type": "tile", "dirt": 2, "specialty": "none"},
+         {"tc": {"x": 6, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 7, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 7, "y": 2}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 7, "y": 3}, "type": "wall", "dirt": 0, "specialty": "none"},
+         {"tc": {"x": 7, "y": 4}, "type": "wall", "dirt": 0, "specialty": "none"}
         ]}
 ]

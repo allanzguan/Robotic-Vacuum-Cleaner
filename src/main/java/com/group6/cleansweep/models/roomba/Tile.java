@@ -10,16 +10,19 @@ public class Tile {
 
     //How much dirt is on the tile
     private int dirt;
+    private String specialty;
 
-    public Tile(TileCoordinate tc, String t, int d){
+    public Tile(TileCoordinate tc, String t, int d, String sp){
         this.tc = tc;
         type = t;
         dirt = d;
+        specialty = sp;
     }
 
     public TileCoordinate getTileCoordinate() {return tc;}
     public String getType() {return type;}
     public int getDirt() {return dirt;}
+    public String getSpecialty() {return specialty;}
 
     //Idea on removing dirt to not expose too much info on variables
     //this can change if needed

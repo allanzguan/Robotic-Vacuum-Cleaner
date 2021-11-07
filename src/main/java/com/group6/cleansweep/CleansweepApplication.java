@@ -4,6 +4,7 @@ import com.group6.cleansweep.models.User;
 import com.group6.cleansweep.models.UserDB;
 import com.group6.cleansweep.models.roomba.CleanSweep;
 import com.group6.cleansweep.models.roomba.Floor;
+import com.group6.cleansweep.models.roomba.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -29,19 +30,23 @@ public class CleansweepApplication {
 		uc.add(u1);
 		uc.add(u2);
 
+/*Used to test changes to JSON
+		try{
+			//Test code that was from the Old Repo
+			Floor f = new Floor("src/main/java/com/group6/cleansweep/models/roomba/floorplans/doorDemo.json");
+			CleanSweep c = new CleanSweep(f);
+			Logger log = Logger.getInstance();
+			//activate the clean sweeps
+			c.run();
 
-		//Test code that was from the Old Repo
-		/*Floor f = new Floor("src/main/java/com/group6/cleansweep/models/roomba/floorplans/longjohn.json");
-		CleanSweep c = new CleanSweep(f);
-		Logger log = Logger.getInstance();
-		//activate the clean sweeps
-		c.run();
-
-		System.out.println("Ending tile of CleanSweep run: " + Arrays.toString(c.getCurrentTile()));
-		log.write("Ending tile of CleanSweep run: " + Arrays.toString(c.getCurrentTile()));
+			System.out.println("Ending tile of CleanSweep run: " + Arrays.toString(c.getCurrentTile()));
+			log.write("Ending tile of CleanSweep run: " + Arrays.toString(c.getCurrentTile()));
 
 
-		log.createLog();*/
+			log.createLog();
+		}catch (Exception e){e.printStackTrace();}
+
+ */
 
 	}
 
