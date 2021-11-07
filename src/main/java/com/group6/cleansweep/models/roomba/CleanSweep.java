@@ -11,13 +11,14 @@ public class CleanSweep {
     private Tile lastTile;
     private float battery;
     private short dirtBag;
+    public boolean isRunning = false;
 
     public CleanSweep(Floor f){
         fp = f;
     }
 
     public void run() throws InterruptedException, IOException {
-
+        isRunning = true;
         Logger log = Logger.getInstance();
         startTile = TileLocator.findStartingTile(fp); //gets the tile to start at
         curTile = startTile;
@@ -144,6 +145,10 @@ public class CleanSweep {
     public int[] getCurrentTile() {
         /* Only returns coordinates of current tile as int array - no dirt information */
         return new int[]{curTile.getTileCoordinate().getX(), curTile.getTileCoordinate().getY()};
+    }
+
+    public Floor getFloor(){
+        return fp;
     }
 
 }

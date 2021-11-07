@@ -28,21 +28,21 @@ public class UserDB {
                 return true;
             }
         }
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st;
-            while((st = br.readLine()) != null){
-                String[] un = st.split(" ");
-                if(un[0].equals(u.getUsername())){
-                    User newGuy = new User(u.getUsername(), u.getPassword());
-                    ul.add(newGuy);
-                    if(un.length == 3){
-                        newGuy.setCleansweep(un[2]);
-                    }
-                    return true;
-                }
-            }
-        }catch(Exception e){e.printStackTrace();}
+//        try{
+//            BufferedReader br = new BufferedReader(new FileReader(file));
+//            String st;
+//            while((st = br.readLine()) != null){
+//                String[] un = st.split(" ");
+//                if(un[0].equals(u.getUsername())){
+//                    User newGuy = new User(u.getUsername(), u.getPassword());
+//                    ul.add(newGuy);
+//                    if(un.length == 3){
+//                        newGuy.setCleansweep(un[2]);
+//                    }
+//                    return true;
+//                }
+//            }
+//        }catch(Exception e){e.printStackTrace();}
 
         return false;
     }

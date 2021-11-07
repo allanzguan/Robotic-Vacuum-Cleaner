@@ -1,12 +1,75 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title> Clean Sweep </title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap" rel="stylesheet">
+    <style>
+        .center{ text-align: center; font-family: Arial, serif; }
+        .box { margin: auto; border-radius: 15px; background: #FFFFFF; border: 2px solid #84c464; padding: 20px; width: 60%; height: 20px; line-height: 20px; }
+        .left {  font-family: Arial, serif;  font-weight: 900; text-align: center; float: left; font-size: 30px; color: #000000 }
+        .right {  font-family: Arial, serif;  font-weight: 900; text-align: center; float: right; font-size: 30px; color: #84c464 }
+
+    </style>
 </head>
+
 <body>
-<h1>User Home Page</h1>
-<h1 th:text=" 'Welcome ' + ${user.username}"></h1>
-<h1 th:text=" 'Your Clean Sweep is:  ' + ${user.cleansweep}"></h1>
+    <div class="logo">
+        <img class="logo-img" src="/image/clean-sweep-small-cropped.png" alt="Clean Sweep Logo">
+    </div>
+
+    <h1 class="center" th:text=" 'Welcome ' + ${user.username}"></h1>
+
+    <div class="box">
+        <span class="left">Clean Sweep Registered:</span>
+        <span class="right" th:text= "${user.hasRegister}"></span>
+    </div>  <br>
+
+
+    <div class="box">
+        <span class="left">Clean Sweep Running:</span>
+        <span class="right" th:text= "${user.cleansweepRunning}"></span>
+    </div> <br>
+
+    <div class="box">
+        <span class="left">Current Floor:</span>
+        <span class="right" th:text= "${user.onFloor}"></span>
+    </div> <br>
+
+    <div class="box">
+        <span class="left">Current Location:</span>
+        <span class="right"> ??? </span>
+    </div> <br>
+
+    <div class="box">
+        <span class="left">Battery:</span>
+        <span class="right"> ???% </span>
+    </div> <br>
+
+    <div class="box">
+        <span class="left">Dirty Cleaned:</span>
+        <span class="right"> ??? </span>
+    </div> <br>
+
+
+
+<!--<h1 th:text=" 'Your Clean Sweep is currently at:  ' + ${user.cleansweep.getCurrentTile()[0]}"></h1>-->
+
+<!--<form action="#" th:object="${user.cleansweep.run()}" method="post">-->
+
+<!--    <p><input type="submit" value="Run" /> </p>-->
+<!--</form>-->
+
+<!--<button type="button" th:onclick="|${user.run}|">Click Me!</button>-->
+
+<!--<div th:switch="${user.cleansweep.isRunning}">-->
+<!--    <span th:case="${false}">Clean Sweep is not running</span>-->
+<!--    <span th:case="${true}">Logged in user</span>-->
+<!--    <span th:case="*">Should never happen, but who knows...</span>-->
+<!--</div>-->
+
 </body>
 </html>

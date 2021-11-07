@@ -2,16 +2,19 @@ package com.group6.cleansweep;
 
 import com.group6.cleansweep.models.User;
 import com.group6.cleansweep.models.UserDB;
+import com.group6.cleansweep.models.roomba.CleanSweep;
+import com.group6.cleansweep.models.roomba.Floor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 @SpringBootApplication
 public class CleansweepApplication {
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		SpringApplication.run(CleansweepApplication.class, args);
 
 
@@ -19,9 +22,13 @@ public class CleansweepApplication {
 		UserDB uc = UserDB.getInstance();
 		User u1 = new User("user1", "123");
 		User u2 = new User("user2", "123");
-		u2.setCleansweep("AUHF(**!@#@813  <--some clean sweep hash");
+		CleanSweep cs = new CleanSweep(new Floor("src/main/java/com/group6/cleansweep/models/roomba/floorplans/floor1.json"));
+//		cs.run();
+//		System.out.println(cs.getCurrentTile());
+		u2.setCleansweep(cs);
 		uc.add(u1);
 		uc.add(u2);
+
 
 		//Test code that was from the Old Repo
 		/*Floor f = new Floor("src/main/java/com/group6/cleansweep/models/roomba/floorplans/longjohn.json");
