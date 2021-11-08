@@ -1,15 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-  <title>Getting Started: Handling Form Submission</title>
+  <title> Login </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/styles/loginstyles.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Log In</h1>
-<form action="#" th:action="@{/login}" th:object="${user}" method="post">
-  <p>Username: <input type="text" th:field="*{username}" /></p>
-  <p>Password: <input type="text" th:field="*{password}" /></p>
-  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+  <div>
+    <div class="navbar">
+      <div class="logo">
+        <img class="logo-img" src="/image/clean-sweep-small-cropped.png" alt="Clean Sweep Logo">
+      </div>
+    </div>
+  </div>
+  <div class="login-container">
+    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+      <p>Username: <input type="text" th:field="*{username}" /></p>
+      <p>Password: <input type="text" th:field="*{password}" /></p>
+      <p> <input type="submit" value="Submit"></p>
+      <p> <input type="reset" value="Reset"></p>
+    </form>
+    <div class="bottom-container">
+      <p class="copyright"> &copy; 2021 Beck, Cano, Chan, Guan </p>
+    </div>
+  </div>
 </body>
 </html>
