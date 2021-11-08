@@ -1,14 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title> Registration </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/styles/loginstyles.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>User does not exist please register</h1>
-<form action="#" th:action="@{/register}" th:object="${user}" method="get">
-
-    <p><input type="submit" value="Let's go" /> </p>
-</form>
+    <div class="navbar">
+        <div class="logo">
+            <img class="logo-img" src="/image/clean-sweep-small-cropped.png" alt="Clean Sweep Logo">
+        </div>
+    </div>
+    <div class="login-container">
+        <form action="#" th:action="@{/register}" th:object="${user}" method="get">
+            <p><input type="submit" value="Register account" /> </p>
+        </form>
+    </div>
+    <div class="bottom-container">
+        <p class="copyright"> &copy; 2021 Beck, Cano, Chan, Guan </p>
+    </div>
 </body>
 </html>

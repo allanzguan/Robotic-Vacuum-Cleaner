@@ -1,0 +1,44 @@
+body {
+    background-color: #e8eae6;
+}
+
+.bottom-container {
+    background-color: #d1d3cf;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+form {
+    text-align:center;
+}
+
+.copyright {
+    color: #1a1a1a;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.login-container {
+    border: 2px solid #d1d3cf;
+    border-radius: 25px;
+    width: 25%;
+    margin: 0 auto;
+}
+
+.navbar {
+    overflow: auto;
+    width: 100%;
+}
+
+.submit-button {
+    font-family: Arial, serif;
+    color: #ffffff;
+    font-size: 20px;
+    background: #84c464;
+    padding: 10px 20px 10px 20px;
+    position: relative;
+    text-decoration: none;
+}

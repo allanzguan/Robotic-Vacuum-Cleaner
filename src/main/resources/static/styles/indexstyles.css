@@ -12,13 +12,13 @@ body {
 
 .copyright {
     color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
     text-align: center;
 }
 
 .top-container {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin: 0;
 }
@@ -29,7 +29,7 @@ body {
 }
 
 .login-btn {
-    font-family: Arial, serif;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-size: 20px;
     background: #84c464;
@@ -57,7 +57,7 @@ body {
 }
 
 .register-btn {
-    font-family: Arial, serif;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-size: 20px;
     background: #84c464;
