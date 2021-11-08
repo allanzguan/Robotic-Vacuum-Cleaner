@@ -6,7 +6,6 @@ public class Node {
     private Node child1, child2, child3, child4;
     private Tile tile;
     private float pathCost, totalCost;
-    boolean expanded;
 
     //Constructor
     public Node(Tile tile) {
@@ -18,13 +17,11 @@ public class Node {
         child4 = null;
         pathCost = 0;
         totalCost = 0;
-        expanded = false;
     }
 
     //Setters
     public void setPathCost(float pc){this.pathCost = pc;}
     public void setTotalCost(float tc){this.totalCost = tc;}
-    public void expand(){this.expanded = true;}
     public void addChild(Tile newChild) {
         Node temp = new Node(newChild);
         temp.parent = this;
@@ -49,5 +46,4 @@ public class Node {
     public Tile getTile(){return this.tile;}
     public float getPathCost(){return this.pathCost;}
     public float getTotalCost(){return this.totalCost;}
-    public boolean getExpanded(){return this.expanded;}
 }

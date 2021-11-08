@@ -6,11 +6,13 @@ import java.util.concurrent.TimeUnit;
 
 //Return Home AI
 public class ReturnHome {
-    private static final LinkedList<Node> solution = new LinkedList<>();
+    private static final LinkedList<Node> solution = new LinkedList<>(); //Holds most efficient path
+    private static final LinkedList<Node> explore = new LinkedList<>(); //Holds a list of explored nodes
 
     //Find the most efficient path to a charging station
     public static float find(Floor f, Tile curTile) {
         solution.clear();
+        explore.clear();
         Node head = new Node(curTile);
         LinkedList<Node> queue = new LinkedList<>(); //Holds Expandable Nodes
         queue.add(0, head);
@@ -18,7 +20,7 @@ public class ReturnHome {
         //Run while there exists nodes to expand
         while(!queue.isEmpty()) {
             Node ex = queue.removeFirst();
-            ex.expand();
+            explore.add(ex);
 
             //Found a Solution
             if (ex.getTile().getSpecialty().equals("station")) {
@@ -34,22 +36,22 @@ public class ReturnHome {
             //Find which directions the Clean Sweep can move
             //Test North
             Tile test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX(),ex.getTile().getTileCoordinate().getY() + 1);
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door") && notExplored(test)) {
                 ex.addChild(test);
             }
             //Test West
             test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX() - 1, ex.getTile().getTileCoordinate().getY());
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door") && notExplored(test)) {
                 ex.addChild(test);
             }
             //Test East
             test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX() + 1, ex.getTile().getTileCoordinate().getY());
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door") && notExplored(test)) {
                 ex.addChild(test);
             }
             //Test South
             test = TileLocator.findTile(f, ex.getTile().getTileCoordinate().getX(), ex.getTile().getTileCoordinate().getY() - 1);
-            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door")/*&& not explored*/) {
+            if (!test.getType().equals("wall") && !test.getType().equals("stairs") && !test.getSpecialty().contains("Closed Door") && notExplored(test)) {
                 ex.addChild(test);
             }
 
@@ -73,59 +75,22 @@ public class ReturnHome {
 
     }
 
-    //Moves CleanSweep to Charging Station
-    /*public static float execute(Logger log, float battery) throws IOException, InterruptedException{
-        Node curTile, nextTile;
-        curTile = solution.removeFirst();
-        LinkedList<Node> retrace = new LinkedList<>(); //Holds return route
-
-        String message = " Low power. Returning to Charging Station.";
-        System.out.println(message);
-        log.write(message);
-
-        retrace.add(0, curTile);
-
-        //Returning to Charging Station
-        while (!solution.isEmpty()) {
-            nextTile = solution.removeFirst();
-            float powerUse = (TileToPower.convert(curTile.getTile().getType()) + TileToPower.convert(nextTile.getTile().getType())) / 2;
-            battery -= powerUse;
-
-            if (!nextTile.getTile().getSpecialty().equals("station")) {
-                message = "Now on Tile: " + nextTile.getTile().toString() + " battery: " + battery + "/250.0 \n Low power. Returning to Charging Station.";
-            }
-            else {
-                battery = 250;
-                message = "Now on Tile: " + nextTile.getTile().toString() + " Charging... battery: " + battery + "/250.0 \n Returning to Cleaning Cycle.";
-            }
-            System.out.println(message);
-            log.write(message);
-
-            curTile = nextTile;
-            retrace.add(0, curTile);
-
-            TimeUnit.SECONDS.sleep(1);
-        }
-        retrace.removeFirst(); //Remove Charging Station from Return Path
-
-        //Retracing Path
-        while (!retrace.isEmpty()) {
-            nextTile = retrace.removeFirst();
-            float powerUse = (TileToPower.convert(curTile.getTile().getType()) + TileToPower.convert(nextTile.getTile().getType())) / 2;
-            battery -= powerUse;
-
-            message = "Now on Tile: " + nextTile.getTile().toString() + " battery: " + battery + "/250.0";
-            System.out.println(message);
-            log.write(message);
-
-            curTile = nextTile;
-
-            TimeUnit.SECONDS.sleep(1);
-        }
-
-        return battery;
-    }*/
-
     //Get Solution
     public static LinkedList<Node> getPath() {return solution;}
+
+    //Checks if a tile has already been explored
+    public static boolean notExplored(Tile test) {
+        int x = test.getTileCoordinate().getX();
+        int y = test.getTileCoordinate().getY();
+
+        //Checks explore for tile coordinates
+        for (int i = 0; i < explore.size(); i++) {
+            Node temp = explore.get(i);
+            if (x == temp.getTile().getTileCoordinate().getX() && y == temp.getTile().getTileCoordinate().getY())
+                return false;
+        }
+
+        //If not found
+        return true;
+    }
 }
