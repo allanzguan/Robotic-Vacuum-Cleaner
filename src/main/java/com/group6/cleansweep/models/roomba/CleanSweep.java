@@ -1,6 +1,7 @@
 package com.group6.cleansweep.models.roomba;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 public class CleanSweep {
@@ -9,6 +10,7 @@ public class CleanSweep {
     private Tile curTile;
     private Tile startTile;
     private Tile lastTile;
+    private Logger log;
     private float battery;
     private short dirtBag;
     public boolean isRunning = false;
@@ -19,7 +21,7 @@ public class CleanSweep {
 
     public void run() throws InterruptedException, IOException {
         isRunning = true;
-        Logger log = Logger.getInstance();
+        log = Logger.getInstance();
         startTile = TileLocator.findStartingTile(fp); //gets the tile to start at
         curTile = startTile;
         lastTile = startTile;
@@ -74,7 +76,7 @@ public class CleanSweep {
                 if (pathCost + (2 * powerUseAv) > battery) {
                     pathCost = ReturnHome.find(fp, curTile);
                     if (pathCost + (2 * powerUseAv) > battery) {
-                        battery = ReturnHome.execute(log, battery);
+                        this.resupply();
                     }
                 }
 
@@ -104,7 +106,7 @@ public class CleanSweep {
                     if (pathCost + powerUse2 > battery) {
                         pathCost = ReturnHome.find(fp, curTile);
                         if (pathCost + powerUse2 > battery) {
-                            battery = ReturnHome.execute(log, battery);
+                            this.resupply();
                         }
                     }
 
@@ -123,15 +125,7 @@ public class CleanSweep {
                     //Dirt Bag is Full
                     if (dirtBag == 50) {
                         ReturnHome.find(fp, curTile); //Finds the path of the least cost
-                        battery = ReturnHome.execute(log, battery);
-                        //Empty Bag
-
-                        run = false; //Cannot Clean if Full
-
-                        message = "Dirt Capacity Reached. Empty Me.";
-                        System.out.println(message);
-                        log.write(message);
-                        break;
+                        this.resupply();
                     }
                 }
 
@@ -149,6 +143,70 @@ public class CleanSweep {
 
     public Floor getFloor(){
         return fp;
+    }
+
+    //Moves CleanSweep to Charging Station
+    public void resupply() throws IOException, InterruptedException{
+        LinkedList<Node> homePath = ReturnHome.getPath(); //Gets the path to the nearest station
+        LinkedList<Node> retrace = new LinkedList<>(); //Holds return route
+
+        Node curTile, nextTile;
+        curTile = homePath.removeFirst();
+
+        String message = " Low power. Returning to Charging Station.";
+        System.out.println(message);
+        log.write(message);
+
+        retrace.add(0, curTile);
+
+        //Returning to Charging Station
+        while (!homePath.isEmpty()) {
+            nextTile = homePath.removeFirst();
+            float powerUse = (TileToPower.convert(curTile.getTile().getType()) + TileToPower.convert(nextTile.getTile().getType())) / 2;
+            battery -= powerUse;
+
+            if (!nextTile.getTile().getSpecialty().equals("station")) {
+                message = "Now on Tile: " + nextTile.getTile().toString() + " battery: " + battery + "/250.0 \n Low power. Returning to Charging Station.";
+                System.out.println(message);
+                log.write(message);
+            }
+            else {
+                battery = 250;
+                message = "Now on Tile: " + nextTile.getTile().toString() + " Charging... battery: " + battery + "/250.0 \n Returning to Cleaning Cycle.";
+                System.out.println(message);
+                log.write(message);
+                if (dirtBag == 50) {
+                    message = "Dirt Capacity Reached. Empty Me.";
+                    System.out.println(message);
+                    log.write(message);
+
+                    //TO DO: Wait to be emptied.
+                    dirtBag = 0;
+                }
+            }
+
+            curTile = nextTile;
+            retrace.add(0, curTile);
+
+            TimeUnit.SECONDS.sleep(1);
+        }
+        retrace.removeFirst(); //Remove Charging Station from Return Path
+
+        //Retracing Path
+        while (!retrace.isEmpty()) {
+            nextTile = retrace.removeFirst();
+            float powerUse = (TileToPower.convert(curTile.getTile().getType()) + TileToPower.convert(nextTile.getTile().getType())) / 2;
+            battery -= powerUse;
+
+            message = "Now on Tile: " + nextTile.getTile().toString() + " battery: " + battery + "/250.0";
+            System.out.println(message);
+            log.write(message);
+
+            curTile = nextTile;
+
+            TimeUnit.SECONDS.sleep(1);
+        }
+
     }
 
 }

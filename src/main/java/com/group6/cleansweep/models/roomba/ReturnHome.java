@@ -74,7 +74,7 @@ public class ReturnHome {
     }
 
     //Moves CleanSweep to Charging Station
-    public static float execute(Logger log, float battery) throws IOException, InterruptedException{
+    /*public static float execute(Logger log, float battery) throws IOException, InterruptedException{
         Node curTile, nextTile;
         curTile = solution.removeFirst();
         LinkedList<Node> retrace = new LinkedList<>(); //Holds return route
@@ -124,5 +124,8 @@ public class ReturnHome {
         }
 
         return battery;
-    }
+    }*/
+
+    //Get Solution
+    public static LinkedList<Node> getPath() {return solution;}
 }
