@@ -23,7 +23,7 @@ public class CleansweepApplication {
 		UserDB uc = UserDB.getInstance();
 		User u1 = new User("user1", "123");
 		User u2 = new User("user2", "123");
-		CleanSweep cs = new CleanSweep(new Floor("src/main/java/com/group6/cleansweep/models/roomba/floorplans/floor1.json"));
+		CleanSweep cs = new CleanSweep(new Floor("src/main/java/com/group6/cleansweep/models/roomba/floorplans/floor1.json"), false);
 //		cs.run();
 //		System.out.println(cs.getCurrentTile());
 		u2.setCleansweep(cs);

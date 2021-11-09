@@ -22,9 +22,9 @@
          {"tc": {"x": 3, "y": 6}, "type": "wall", "dirt": 0, "specialty": "none"},
 
          {"tc": {"x": 4, "y": 1}, "type": "wall", "dirt": 0, "specialty": "none"},
-         {"tc": {"x": 4, "y": 2}, "type": "carpet", "dirt": 1, "specialty": "Closed Door -> room 2"},
+         {"tc": {"x": 4, "y": 2}, "type": "carpet", "dirt": 1, "specialty": "Open Door -> room 2"},
          {"tc": {"x": 4, "y": 3}, "type": "wall", "dirt": 0, "specialty": "none"},
-         {"tc": {"x": 4, "y": 4}, "type": "carpet", "dirt": 2, "specialty": "Closed Door -> room 2"}, //can change if you want
+         {"tc": {"x": 4, "y": 4}, "type": "carpet", "dirt": 2, "specialty": "Open Door -> room 2"}, //can change if you want
          {"tc": {"x": 4, "y": 5}, "type": "wall", "dirt": 0, "specialty": "none"},
          {"tc": {"x": 4, "y": 6}, "type": "wall", "dirt": 0, "specialty": "none"}
         ]},

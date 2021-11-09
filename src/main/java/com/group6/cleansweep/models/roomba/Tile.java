@@ -33,6 +33,6 @@ public class Tile {
     //sends an overall summary of the Tile
     @Override
     public String toString(){
-        return "xCoord: " + tc.getX() + " yCoord: " + tc.getY() + " type: " + type + " dirt amount: " + dirt;
+        return "xCoord: " + tc.getX() + " yCoord: " + tc.getY() + " type: " + type + " dirt amount: " + dirt + " with " + specialty;
     }
 }

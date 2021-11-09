@@ -14,9 +14,11 @@ public class CleanSweep {
     private float battery;
     private short dirtBag;
     public boolean isRunning = false;
+    public boolean testMode;
 
-    public CleanSweep(Floor f){
+    public CleanSweep(Floor f, boolean t){
         fp = f;
+        testMode = t;
     }
 
     public void run() throws InterruptedException, IOException {
@@ -77,6 +79,9 @@ public class CleanSweep {
                     pathCost = ReturnHome.find(fp, curTile);
                     if (pathCost + (2 * powerUseAv) > battery) {
                         this.resupply();
+                        if(testMode == true){ //for testing purposes cleansweep will turn off when it comes back to a station
+                            run = false;
+                        }
                     }
                 }
 
@@ -92,8 +97,13 @@ public class CleanSweep {
                 curTile = North;
 
                 //Check for Charging Station
-                if (curTile.getSpecialty().equals("station"))
+                if (curTile.getSpecialty().equals("station")){
                     battery = 250; //Charges
+                    if(testMode == true){ //testing mode turns cleansweep off with recharge
+                        run = false;
+                    }
+                }
+
 
                 String message = "Now on Tile: " + curTile.toString() + " battery: " + battery + "/250.0";
                 //if(battery <= 40) message += "\n LOW BATTERY!";
@@ -120,7 +130,8 @@ public class CleanSweep {
                     System.out.println(message);
                     log.write(message);
 
-                    TimeUnit.SECONDS.sleep(1);
+                    //increase speed while testing
+                    if(testMode == false) {TimeUnit.SECONDS.sleep(1);}
 
                     //Dirt Bag is Full
                     if (dirtBag == 50) {
@@ -129,7 +140,7 @@ public class CleanSweep {
                     }
                 }
 
-                TimeUnit.SECONDS.sleep(1);
+                if(testMode == false) {TimeUnit.SECONDS.sleep(1);}
             }
 
         }

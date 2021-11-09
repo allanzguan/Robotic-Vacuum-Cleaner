@@ -12,6 +12,7 @@ public class Logger {
 
     SimpleDateFormat formatter= new SimpleDateFormat("'Log' yyyy-MM-dd 'H'HH'M'mm'S'ss ");
     Date date = new Date(System.currentTimeMillis());
+    private StringBuilder sb = new StringBuilder();
 
 
     private FileWriter fw = new FileWriter(formatter.format(date).toString());
@@ -31,9 +32,12 @@ public class Logger {
     public void write(String s) throws IOException{
         bw.write(s);
         bw.newLine();
+        sb.append(s+"\n");
     }
     public void createLog() throws IOException {
         bw.close();
     }
+
+    public String LogContent(){return sb.toString();}
 
 }
