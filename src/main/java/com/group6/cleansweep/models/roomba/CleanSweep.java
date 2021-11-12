@@ -15,18 +15,21 @@ public class CleanSweep {
     private short dirtBag;
     public boolean isRunning = false;
     public boolean testMode;
+    public int dirtCleaned = 0;
 
     public CleanSweep(Floor f, boolean t){
         fp = f;
         testMode = t;
+        startTile = TileLocator.findStartingTile(fp);
+        curTile = startTile;
+        lastTile = startTile;
     }
 
     public void run() throws InterruptedException, IOException {
         isRunning = true;
         log = Logger.getInstance();
-        startTile = TileLocator.findStartingTile(fp); //gets the tile to start at
-        curTile = startTile;
-        lastTile = startTile;
+        //startTile = TileLocator.findStartingTile(fp); //gets the tile to start at
+        //curTile = startTile;
         boolean run = true;
         battery = 250; //Assumes a full charge at start
         float pathCost = 0;
@@ -123,6 +126,7 @@ public class CleanSweep {
                     //Clean Dirt
                     curTile.removeDirt();
                     dirtBag++;
+                    dirtCleaned++;
                     battery -= powerUse2;
 
                     message = "Cleaning Tile... battery: " + battery + "/250.0";
@@ -157,6 +161,8 @@ public class CleanSweep {
     }
 
     public float getBattery() { return battery;}
+
+    public int getDirtCleaned() {return dirtCleaned;}
 
     //Moves CleanSweep to Charging Station
     public void resupply() throws IOException, InterruptedException{

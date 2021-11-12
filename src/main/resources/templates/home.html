@@ -41,7 +41,7 @@
 
     <div class="box">
         <span class="left">Current Location:</span>
-        <span class="right"> ???</span>
+        <span class="right" th:text= "${user.getLocation}"></span>
     </div> <br>
 
     <div class="box">
@@ -51,7 +51,7 @@
 
     <div class="box">
         <span class="left">Dirty Cleaned:</span>
-        <span class="right"> ??? </span>
+        <span class="right" th:text="${user.getDirtTotal}"> </span>
     </div> <br>
 
 

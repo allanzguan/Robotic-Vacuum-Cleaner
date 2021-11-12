@@ -95,7 +95,15 @@ public class User {
     }
 
     public String getLocation(){
-        return cleansweep.getCurrentTile().toString();
+        int[] coordinates = cleansweep.getCurrentTile();
+        String xCoord = "X: " + coordinates[0];
+        String yCoord = " Y: " + coordinates[1];
+        String location = xCoord + yCoord;
+        return location;
+    }
+
+    public int getDirtTotal(){
+        return cleansweep.getDirtCleaned();
     }
 
     public String getBattery(){
