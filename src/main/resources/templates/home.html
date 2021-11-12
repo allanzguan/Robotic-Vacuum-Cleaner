@@ -1,14 +1,15 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title> Clean Sweep </title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta  http-equiv="refresh" content="1">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap" rel="stylesheet">
     <style>
-        .center{ text-align: center; font-family: Arial, serif; }
+        .center{ font-family: Arial, serif;  font-weight: 900; text-align: center; }
         .box { margin: auto; border-radius: 15px; background: #FFFFFF; border: 2px solid #84c464; padding: 20px; width: 60%; height: 20px; line-height: 20px; }
         .left {  font-family: Arial, serif;  font-weight: 900; text-align: center; float: left; font-size: 30px; color: #000000 }
         .right {  font-family: Arial, serif;  font-weight: 900; text-align: center; float: right; font-size: 30px; color: #84c464 }
@@ -46,7 +47,7 @@
 
     <div class="box">
         <span class="left">Battery:</span>
-        <span class="right"  th:text= "${user.getBattery}"> ???% </span>
+        <span class="right"  th:text= "${user.getBattery}"></span>
     </div> <br>
 
     <div class="box">

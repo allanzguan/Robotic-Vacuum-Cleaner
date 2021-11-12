@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.group6.cleansweep.models.api;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 
@@ -29,7 +30,7 @@ public class WebController {
     }
 
     @PostMapping("/login")
-    public String userSubmit(@ModelAttribute User user, Model model){
+    public String userSubmit(@ModelAttribute User user, Model model, RedirectAttributes ra){
 
         UserDB db = UserDB.getInstance();
 
@@ -38,10 +39,21 @@ public class WebController {
         }
         user = db.getUser(user);
         model.addAttribute("user", user);
+        int id = user.getHash();
+
+        return "redirect:/home/"+id;
+    }
+
+    @GetMapping("/home/{id}")
+    public String userHome(@PathVariable("id") int id, @ModelAttribute User user, Model model){
+
+        UserDB db = UserDB.getInstance();
+        User u = db.getByHash(id);
+        user = db.getUser(u);
+        model.addAttribute("user",user);
 
         return "home";
     }
-
 
 //    @PostMapping("/run")
 //    public String csRun(@ModelAttribute User user, Model model) throws IOException, InterruptedException {

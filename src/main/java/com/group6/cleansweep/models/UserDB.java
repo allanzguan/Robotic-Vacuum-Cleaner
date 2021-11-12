@@ -70,4 +70,13 @@ public class UserDB {
         }
         return null;
     }
+
+    public User getByHash(int h){
+        for(User x : ul){
+            if(x.getHash() == h){
+                return x;
+            }
+        }
+        return null;
+    }
 }

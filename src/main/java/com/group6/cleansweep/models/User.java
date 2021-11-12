@@ -110,6 +110,10 @@ public class User {
         if(cleansweep == null){
             return "--";
         }
-        return String.valueOf(cleansweep.getBattery());
+        return String.valueOf(Math.round((cleansweep.getBattery()/250)*100* 100.0) / 100.0)+"%";
+    }
+
+    public int getHash(){
+        return this.hashCode();
     }
 }
