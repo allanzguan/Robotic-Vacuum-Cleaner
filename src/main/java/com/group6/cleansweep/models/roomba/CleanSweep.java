@@ -156,6 +156,8 @@ public class CleanSweep {
         return fp;
     }
 
+    public float getBattery() { return battery;}
+
     //Moves CleanSweep to Charging Station
     public void resupply() throws IOException, InterruptedException{
         LinkedList<Node> homePath = ReturnHome.getPath(); //Gets the path to the nearest station

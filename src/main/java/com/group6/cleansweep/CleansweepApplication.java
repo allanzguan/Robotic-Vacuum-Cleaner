@@ -27,6 +27,7 @@ public class CleansweepApplication {
 //		cs.run();
 //		System.out.println(cs.getCurrentTile());
 		u2.setCleansweep(cs);
+
 		uc.add(u1);
 		uc.add(u2);
 

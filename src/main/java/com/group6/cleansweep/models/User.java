@@ -72,10 +72,36 @@ public class User {
         return cleansweep.getFloor().getFloorName();
     }
 
-    public void run() throws IOException, InterruptedException {
-        cleansweep.run();
-        System.out.println("--------------------------------------");
-        System.out.println("user run called");
-        System.out.println("--------------------------------------");
+    Thread thread = new Thread(){
+        public void run() {
+            try {
+                cleansweep.run();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+
+    public void start(){
+        if(cleansweep.isRunning == false){
+            thread.start();
+        }
+        else{
+            ;
+        }
+    }
+
+    public String getLocation(){
+        return cleansweep.getCurrentTile().toString();
+    }
+
+    public String getBattery(){
+        if(cleansweep == null){
+            return "--";
+        }
+        return String.valueOf(cleansweep.getBattery());
     }
 }
