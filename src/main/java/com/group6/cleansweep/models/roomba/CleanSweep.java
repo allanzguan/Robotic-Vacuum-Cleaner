@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public class CleanSweep {
 
     private Floor fp;
-    private Tile curTile;
+    private Tile locationTile;
     private Tile startTile;
     private Tile lastTile;
     private Logger log;
@@ -21,21 +21,19 @@ public class CleanSweep {
         fp = f;
         testMode = t;
         startTile = TileLocator.findStartingTile(fp);
-        curTile = startTile;
+        locationTile = startTile;
         lastTile = startTile;
     }
 
     public void run() throws InterruptedException, IOException {
         isRunning = true;
         log = Logger.getInstance();
-        //startTile = TileLocator.findStartingTile(fp); //gets the tile to start at
-        //curTile = startTile;
         boolean run = true;
         battery = 250; //Assumes a full charge at start
         float pathCost = 0;
         dirtBag = 0; //Maxes at 50
 
-        String startMessage = "Starting at Tile: " + curTile.toString();
+        String startMessage = "Starting at Tile: " + locationTile.toString();
         System.out.println(startMessage);
         log.write(startMessage);
 
@@ -55,7 +53,7 @@ public class CleanSweep {
                 float powerUse1, powerUse2, powerUseAv;
 
                 //Set powerUse1
-                powerUse1 = TileToPower.convert(curTile.getType());
+                powerUse1 = TileToPower.convert(locationTile.getType());
 
                 //Error Handling
                 if (powerUse1 == 0) {
@@ -79,7 +77,7 @@ public class CleanSweep {
 
                 //Checks if ReturnHome pathfinding is needed
                 if (pathCost + (2 * powerUseAv) > battery) {
-                    pathCost = ReturnHome.find(fp, curTile);
+                    pathCost = ReturnHome.find(fp, locationTile);
                     if (pathCost + (2 * powerUseAv) > battery) {
                         this.resupply();
                         if(testMode == true){ //for testing purposes cleansweep will turn off when it comes back to a station
@@ -96,11 +94,11 @@ public class CleanSweep {
                     run = false; //at 0 we end the clean sweep
                 }
 
-                lastTile = curTile; //change the previous tile
-                curTile = North;
+                lastTile = locationTile; //change the previous tile
+                locationTile = North;
 
                 //Check for Charging Station
-                if (curTile.getSpecialty().equals("station")){
+                if (locationTile.getSpecialty().equals("station")){
                     battery = 250; //Charges
                     if(testMode == true){ //testing mode turns cleansweep off with recharge
                         run = false;
@@ -108,23 +106,23 @@ public class CleanSweep {
                 }
 
 
-                String message = "Now on Tile: " + curTile.toString() + " battery: " + battery + "/250.0";
+                String message = "Now on Tile: " + locationTile.toString() + " battery: " + battery + "/250.0";
                 //if(battery <= 40) message += "\n LOW BATTERY!";
                 System.out.println(message);
                 log.write(message);
 
                 //Clean Dirt
-                while (curTile.getDirt() > 0) {
+                while (locationTile.getDirt() > 0) {
                     //Checks for pathfinding
                     if (pathCost + powerUse2 > battery) {
-                        pathCost = ReturnHome.find(fp, curTile);
+                        pathCost = ReturnHome.find(fp, locationTile);
                         if (pathCost + powerUse2 > battery) {
                             this.resupply();
                         }
                     }
 
                     //Clean Dirt
-                    curTile.removeDirt();
+                    locationTile.removeDirt();
                     dirtBag++;
                     dirtCleaned++;
                     battery -= powerUse2;
@@ -139,7 +137,7 @@ public class CleanSweep {
 
                     //Dirt Bag is Full
                     if (dirtBag == 50) {
-                        ReturnHome.find(fp, curTile); //Finds the path of the least cost
+                        ReturnHome.find(fp, locationTile); //Finds the path of the least cost
                         this.resupply();
                     }
                 }
@@ -153,7 +151,7 @@ public class CleanSweep {
 
     public int[] getCurrentTile() {
         /* Only returns coordinates of current tile as int array - no dirt information */
-        return new int[]{curTile.getTileCoordinate().getX(), curTile.getTileCoordinate().getY()};
+        return new int[]{locationTile.getTileCoordinate().getX(), locationTile.getTileCoordinate().getY()};
     }
 
     public Floor getFloor(){
@@ -163,6 +161,8 @@ public class CleanSweep {
     public float getBattery() { return battery;}
 
     public int getDirtCleaned() {return dirtCleaned;}
+
+    public int getDirtbag() {return  dirtBag;}
 
     //Moves CleanSweep to Charging Station
     public void resupply() throws IOException, InterruptedException{
@@ -205,6 +205,7 @@ public class CleanSweep {
             }
 
             curTile = nextTile;
+            locationTile = nextTile.getTile();
             retrace.add(0, curTile);
 
             TimeUnit.SECONDS.sleep(1);
@@ -222,6 +223,7 @@ public class CleanSweep {
             log.write(message);
 
             curTile = nextTile;
+            locationTile = nextTile.getTile();
 
             TimeUnit.SECONDS.sleep(1);
         }

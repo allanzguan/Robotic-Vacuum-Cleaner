@@ -106,6 +106,8 @@ public class User {
         return cleansweep.getDirtCleaned();
     }
 
+    public int getDirtbag() {return cleansweep.getDirtbag();}
+
     public String getBattery(){
         if(cleansweep == null){
             return "--";
